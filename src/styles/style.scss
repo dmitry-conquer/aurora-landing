@@ -413,7 +413,116 @@ $primary-300: #071672;
   }
 }
 
-.landing-process__item-icon {
-  width: 30px;
-  height: 30px;
+.landing-process {
+  @include av('margin-top', 134, 80);
+  &__container {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  &__title {
+    @include av('font-size', 45, 32);
+    font-weight: bold;
+    text-align: center;
+  }
+  &__subtitle {
+    text-align: center;
+    @include av('font-size', 35, 24);
+  }
+  &__list {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 50px;
+  }
+  &__item {
+    flex: 0 0 calc(33.3333%);
+    padding: 0 50px;
+    &:nth-child(1) {
+      padding-left: 0;
+    }
+    &:nth-child(2) {
+      border-right: 2px solid $primary-200;
+      border-left: 2px solid $primary-200;
+    }
+    &:nth-last-child(2) {
+      border-right: 2px solid $primary-200;
+    }
+    @media (max-width: 992px) {
+      flex: 0 0 calc(50%);
+      &:nth-child(1) {
+        padding-left: 50px;
+      }
+      &:nth-child(2) {
+        border-right: none;
+        border-left: 2px solid $primary-200;
+      }
+      &:nth-last-child(2) {
+        border-left: 2px solid $primary-200;
+        border-right: none;
+      }
+    }
+    @media (max-width: 640px) {
+      flex: 0 0 100%;
+      border: none !important;
+      padding: 0 !important;
+    }
+  }
+  &__item-icon {
+    width: 25px;
+    height: 25px;
+    &#sprite-phone {
+      animation: scale-rotate 1.6s infinite;
+    }
+    &#sprite-consultation {
+      animation: scale 1.3s infinite;
+      transform-origin: center;
+      transform: scale(1.7);
+    }
+    &#sprite-paper {
+      animation: scale 1.3s infinite;
+      transform-origin: center;
+      transform: scale(1.4);
+    }
+    &#sprite-clock {
+      animation: scale-rotate 1.3s infinite;
+      transform-origin: center;
+      transform: scale(1.4);
+    }
+  }
+  &__item-title {
+    @include av('font-size', 25, 20);
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  &__item-text {
+    opacity: 0.8;
+    @include av('font-size', 20, 18);
+    line-height: 1.5;
+  }
+}
+
+@keyframes scale-rotate {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.3) rotate(20deg);
+  }
+  50% {
+    transform: scale(1.4) rotate(-20deg);
+  }
+  75% {
+    transform: scale(1.3) rotate(20deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+@keyframes scale {
+  50% {
+    transform: scale(1);
+  }
 }

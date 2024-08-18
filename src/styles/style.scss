@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+@mixin av($property, $startSize, $minSize, $widthFrom: 1270, $widthTo: 375) {
+  $addSize: $startSize - $minSize;
+  #{$property}: calc(#{$minSize + px} + #{$addSize} * (100vw - #{$widthTo + px}) / #{($widthFrom) - ($widthTo)});
+  @media (min-width: ($widthFrom + px)) {
+    #{$property}: $startSize + px;
+  }
+}
+
+$primary-100: #4aa0d9;
+$primary-200: #4b5dc3;
+$primary-300: #071672;
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.landing-wrapper {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.2;
+  background-color: $primary-300;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+}
+.landing-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.landing-button {
+  background-color: $primary-100;
+  width: 100%;
+  max-width: 378px;
+  @include av('font-size', 24, 18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 68px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  @media (max-width: 640px) {
+    height: 56px;
+  }
+  &:hover {
+    border-color: #fff;
+    background-color: transparent;
+  }
+}
+
+.landing-header {
+  padding-top: 34px;
+  @media (max-width: 640px) {
+    padding-top: 20px;
+  }
+  &__container {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    justify-content: space-between;
+    @media (max-width: 640px) {
+      align-items: center;
+    }
+  }
+  &__logo {
+    object-fit: contain;
+    flex-shrink: 0;
+    @include av('max-width', 250, 140);
+  }
+  &__tel {
+    font-weight: bold;
+    @include av('font-size', 35, 18);
+    transition: color 0.3s ease;
+    &:hover {
+      color: $primary-100;
+    }
+  }
+}
+
+.landing-hero {
+  @include av('padding-top', 198, 90);
+  &__container {
+    max-width: 1530px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    column-gap: 23px;
+    row-gap: 12px;
+    font-weight: bold;
+    justify-content: center;
+    flex-wrap: wrap;
+    @media (max-width: 640px) {
+      flex-direction: column;
+      row-gap: 5px;
+    }
+  }
+  &__title-part {
+    @include av('font-size', 80, 40);
+  }
+  &__subtitle {
+    text-align: center;
+    @include av('font-size', 40, 24);
+    margin-bottom: 50px;
+    margin-top: 20px;
+  }
+  &__features {
+    @include av('margin-top', 203, 90);
+    display: flex;
+    gap: 18px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    @media (max-width: 640px) {
+      gap: 10px;
+    }
+  }
+  &__feature {
+    border-radius: 10px;
+    padding: 66px 35px;
+    justify-content: center;
+    flex: 1 0 calc(33.3333% - 20px);
+    @media (max-width: 640px) {
+      flex: 1 0 100%;
+      padding: 35px 20px;
+    }
+    &_blue {
+      background-color: #1b8bff;
+    }
+    &_green {
+      background-color: #95cc68;
+    }
+    &_dark-green {
+      background-color: #30c25f;
+    }
+  }
+  &__feature-title {
+    @include av('font-size', 50, 24);
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    @media (max-width: 640px) {
+      line-height: 1.2;
+    }
+  }
+  &__cards-title {
+    text-align: center;
+    @include av('font-size', 40, 24);
+    margin-bottom: 30px;
+  }
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+  }
+  &__card {
+    background-color: $primary-200;
+    border-radius: 10px;
+    flex: 1 0 282px;
+    max-width: 282px;
+    padding: 56px 18px;
+    @media (max-width: 640px) {
+      max-width: 100%;
+      flex: 0 1 100%;
+      padding: 25px 18px;
+    }
+  }
+  &__card-title {
+    font-weight: bold;
+    text-align: center;
+    @include av('font-size', 38, 20);
+    line-height: 1;
+    span {
+      @include av('font-size', 28, 16);
+    }
+  }
+}
+
+.landing-why {
+  @include av('padding-top', 150, 60);
+  &__container {
+    max-width: 1232px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  &__title {
+    @include av('font-size', 35, 30);
+    display: flex;
+    flex-direction: column;
+    span {
+      padding-top: 28px;
+      font-weight: bold;
+      line-height: 1;
+      @include av('font-size', 100, 50);
+      @media (max-width: 640px) {
+        padding-top: 20px;
+      }
+    }
+  }
+  &__content {
+    font-size: 18px;
+    margin-top: 42px;
+    line-height: 1.6;
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+  &__locations {
+    @include av('margin-top', 84, 40);
+    border: 1px solid $primary-100;
+    padding: 50px 60px 80px 60px;
+    box-shadow:
+      rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-radius: 10px;
+    @media (max-width: 640px) {
+      padding: 30px 25px 50px 25px;
+    }
+  }
+  &__locations-title {
+    font-weight: bold;
+    margin-bottom: 30px;
+    @include av('font-size', 25, 22);
+    @media (max-width: 640px) {
+      margin-bottom: 15px;
+    }
+  }
+  &__locations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include av('gap', 50, 20);
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+      row-gap: 45px;
+    }
+  }
+  &__locations-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__locations-item-icon {
+    margin-bottom: 32px;
+    @media (max-width: 640px) {
+      margin-bottom: 15px;
+    }
+  }
+  &__locations-item-title {
+    font-weight: bold;
+    @include av('font-size', 25, 20);
+    margin-bottom: 25px;
+    @media (max-width: 640px) {
+      margin-bottom: 15px;
+    }
+  }
+  &__locations-item-text {
+    @include av('font-size', 22, 18);
+  }
+}
+
+.landing-leading {
+  @include av('margin-top', 167, 90);
+  @include av('margin-bottom', 167, 90);
+  &__container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    column-gap: 56px;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      row-gap: 30px;
+    }
+  }
+  &__left {
+    flex: 0 1 50%;
+    font-weight: bold;
+    @include av('font-size', 44, 26);
+    span {
+      color: $primary-100;
+    }
+    @media (max-width: 768px) {
+      flex: 0 1 auto;
+    }
+  }
+  &__right {
+    flex: 0 1 50%;
+    @include av('font-size', 18, 16);
+    position: relative;
+    padding-left: 31px;
+    @media (max-width: 768px) {
+      flex: 0 1 auto;
+      padding-left: 20px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: $primary-200;
+      width: 11px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      @media (max-width: 768px) {
+        width: 7px;
+      }
+    }
+  }
+}
+
+.landing-join {
+  @include av('margin-bottom', 233, 90);
+  &__container {
+    max-width: 1032px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  &__title {
+    @include av('font-size', 50, 32);
+    text-align: center;
+  }
+  &__subtitle {
+    @include av('font-size', 123, 50);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    @media (max-width: 640px) {
+      margin: 20px 0;
+    }
+    span {
+      animation: pulse 2s infinite;
+    }
+  }
+  &__text {
+    max-width: 806px;
+    margin: 0 auto;
+    @include av('font-size', 18, 16);
+    margin-bottom: 35px;
+    text-align: center;
+    line-height: 1.4;
+  }
+  &__button {
+    text-transform: uppercase;
+  }
+}
+
+.landing-ic {
+  &__cotainer {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  &__row {
+    display: flex;
+    align-items: stretch;
+    column-gap: 30px;
+    &_reverse {
+      flex-direction: row-reverse;
+    }
+    @media (max-width: 992px) {
+      flex-direction: column;
+      row-gap: 20px;
+      &_reverse {
+        flex-direction: column;
+      }
+    }
+    &:not(:last-child) {
+      @include av('margin-bottom', 108, 50);
+    }
+  }
+  &__row-content {
+    flex: 0 0 468px;
+    @media (max-width: 992px) {
+      flex: 0 1 auto;
+    }
+  }
+  &__row-title {
+    @include av('font-size', 40, 26);
+    @include av('margin-bottom', 106, 25);
+    span {
+      font-weight: 700;
+      @include av('font-size', 45, 30);
+    }
+  }
+  &__row-text {
+    @include av('font-size', 18, 16);
+    line-height: 1.4;
+  }
+  &__row-image {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.landing-process__item-icon {
+  width: 30px;
+  height: 30px;
+}
